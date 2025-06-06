@@ -24,20 +24,26 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
- case "" :
+ case "#" :
   ControllerResponsable::$action($args);
   break;
 
- case "" :
+ case "#" :
     ControllerExaminateur::$action($args);
     break;
  
- case "" :
+ case "#" :
     ControllerEtudiant::$action($args);
     break;
  
- case "" :
+ case "#" :
     ControllerInnovation::$action($args);
+    break;
+
+ case "login" :
+ case "register" :
+ case "logout" :
+    ControllerConnection::$action($args);
     break;
 
  // Tache par défaut

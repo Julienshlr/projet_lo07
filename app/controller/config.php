@@ -2,6 +2,12 @@
 <!-- ----- debut config -->
 <?php
 
+// Si jamais on insère un lien direct sans passer par index alors la session
+// peut ne pas être lancé donc au cas où
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Utile pour le débugage car c'est un interrupteur pour les echos et print_r.
 if (!defined('DEBUG')) {
     define('DEBUG', FALSE);
