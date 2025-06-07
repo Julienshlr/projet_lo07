@@ -5,8 +5,9 @@ body {
 
 .container {
     margin-top: 80px;
-    background-color: greenyellow;
+    background-color: lightgray;
     width: 60%;
+    border-radius: 30px;
 }
 
 .jumbotron {

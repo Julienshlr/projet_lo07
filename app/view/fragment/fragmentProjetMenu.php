@@ -1,13 +1,17 @@
 <?php
-$login = $_SESSION['login_id'] ?? 0;
+$loginId = $_SESSION['login_id'] ?? 0;
 $user = $_SESSION['utilisateur'] ?? "?";
+$role_responsable = $_SESSION['role_responsable'] ?? 0;
+$role_examinateur = $_SESSION['role_examinateur'] ?? 0;
+$role_etudiant = $_SESSION['role_etudiant'] ?? 0;
+$login = $_SESSION['login'] ?? "?";
 ?>
 
 <!-- ----- début fragmentProjetMenu -->
 
 <nav class="navbar navbar-expand-lg bg-success fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="router2.php?action=ProjetAccueil">SCHIELER - PERROUX |  <?php $login ?> |</a>
+    <a class="navbar-brand" href="router2.php?action=ProjetAccueil">SCHIELER - PERROUX |  <?php echo $user ?> |</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +19,7 @@ $user = $_SESSION['utilisateur'] ?? "?";
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
-        <?php if ($user === 'responsable') { ?>
+        <?php if ($role_responsable === 1) { ?>
         <!-- Menu Responsable -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Responsable</a>
@@ -32,7 +36,7 @@ $user = $_SESSION['utilisateur'] ?? "?";
         </li>
         <?php } ?>
         
-        <?php if ($user === 'examinateur') { ?>
+        <?php if ($role_examinateur === 1) { ?>
         <!-- Menu Examinateur -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Examinateur</a>
@@ -46,7 +50,7 @@ $user = $_SESSION['utilisateur'] ?? "?";
         </li>
         <?php } ?>
         
-        <?php if ($user === 'etudiant') { ?>
+        <?php if ($role_etudiant === 1) { ?>
         <!-- Menu Etudiant -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Etudiant</a>
@@ -70,12 +74,11 @@ $user = $_SESSION['utilisateur'] ?? "?";
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Se connecter</a>
           <ul class="dropdown-menu">
-            <?php if ($login != 0){ ?>
-              <li>
-                  Nom d'utilisateur : <?php $login ?><br>
-                  Role : <?php $user ?>
-              </li>
-            <li><a class="dropdown-item" href="router2.php?action=logout">Deconnexion</a></li>
+            <?php if ($loginId != 0){ ?>
+                <li class="dropdown-item">ID : <?php echo $loginId ?></li>
+                <li class="dropdown-item">Nom d'utilisateur : <?php echo $login ?></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="router2.php?action=logout">Deconnexion</a></li>
             <?php } 
             else { ?>
             <li><a class="dropdown-item" href="router2.php?action=login">Login</a></li>

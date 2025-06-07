@@ -25,7 +25,7 @@ if (!defined('LOCAL')) {
 
 if (LOCAL) {
     // Configuration de la base de données sur localhost
-    $dsn = 'mysql:dbname=CAVE;host=localhost;charset=utf8';
+    $dsn = 'mysql:dbname=PROJET;host=localhost;charset=utf8';
     $username = 'root';
     $password = 'root';
 }

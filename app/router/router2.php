@@ -2,6 +2,7 @@
 <!-- ----- debut Router2 -->
 <?php
 require ('../controller/ControllerProjet.php');
+require ('../controller/ControllerConnection.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -10,11 +11,13 @@ $query_string = $_SERVER['QUERY_STRING'];
 // une table de hachage (clé + valeur)
 parse_str($query_string, $param);
 
+// --- On fusionne $_POST pour les données postées (ex: les identifiants de connexion)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $param = array_merge($param, $_POST);
+}
+
 // --- $action contient le nom de la méthode statique recherchée
 $action = htmlspecialchars($param["action"]);
-
-// Modification du routeur pour prendre en compte l'ensemble des paramètres
-$action = $param['action'];
 
 // --- On supprime l'élément action de la structure
 unset($param['action']);
@@ -43,6 +46,7 @@ switch ($action) {
  case "login" :
  case "register" :
  case "logout" :
+ case "readLogin" :
     ControllerConnection::$action($args);
     break;
 
