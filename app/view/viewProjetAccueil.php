@@ -7,7 +7,15 @@
     include 'fragment/fragmentProjetMenu.php';
     include 'fragment/fragmentProjetJumbotron.html';
     ?>
-  </div>   
+  </div>
+  <?php
+    if (!empty($_SESSION['welcome_message'])) { ?>
+    <div class="alert alert-success alert-dismissible fade show m-5" role="alert">
+      <?php echo $_SESSION['welcome_message']; unset($_SESSION['welcome_message']); ?>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php } ?>
+    
    <pre>
     <?php print_r($_SESSION); ?>
     </pre>

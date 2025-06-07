@@ -47,6 +47,7 @@ switch ($action) {
  case "register" :
  case "logout" :
  case "readLogin" :
+ case "readRegister" :
     ControllerConnection::$action($args);
     break;
 

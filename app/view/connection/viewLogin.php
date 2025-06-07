@@ -14,7 +14,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
       ?>
   </div>
   <div class="container mt-3 p-5">
-      <h2>Formulaire de connexion</h2>
+      <h2 class="text-danger">Formulaire de connexion</h2>
       <form role="form" method='post' action='router2.php'>
         <input type="hidden" name='action' value='readLogin'>
         <div class="form-group">  
@@ -40,6 +40,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         <?php } ?>
         <br/> 
         <button class="btn btn-primary" type="submit">Se connecter</button>
+        <button class="btn btn-danger" type="reset">Effacer</button>
       </form>
   </div>
   <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>

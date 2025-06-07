@@ -72,11 +72,11 @@ $login = $_SESSION['login'] ?? "?";
         
         <!-- Menu Se connecter -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Se connecter</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo ($loginId != 0) ? 'Profil' : 'Se connecter'; ?></a>
           <ul class="dropdown-menu">
             <?php if ($loginId != 0){ ?>
-                <li class="dropdown-item">ID : <?php echo $loginId ?></li>
-                <li class="dropdown-item">Nom d'utilisateur : <?php echo $login ?></li>
+                <li class="dropdown-item-text">ID : <?php echo $loginId ?></li>
+                <li class="dropdown-item-text">👤 <?php echo $login ?></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="router2.php?action=logout">Deconnexion</a></li>
             <?php } 

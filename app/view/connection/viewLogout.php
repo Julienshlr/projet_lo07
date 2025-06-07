@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHPWebPage.php to edit this template
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<!-- ----- début viewLogout -->
+<?php
+require($root . '/app/view/fragment/fragmentProjetHeader.html');
+?>
+
+<body>
+  <div class="container">
+    <?php
+    include $root . '/app/view/fragment/fragmentProjetMenu.php';
+    include $root . '/app/view/fragment/fragmentProjetJumbotron.html';
+    ?>
+  </div>
+
+  <div class="container mt-3 p-5">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading text-success">Vous êtes déconnecté</h4>
+      <p>Merci de votre visite et à bientôt !</p>
+    </div>
+    <a href="router2.php?action=login" class="btn btn-primary mt-3">Aller à la page de connexion</a>
+  </div>
+
+  <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
+<!-- ----- fin viewLogout -->

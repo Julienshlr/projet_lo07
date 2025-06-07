@@ -131,6 +131,49 @@ class ModelConnection {
         return null;
     }
   }
+  
+  // Enregistre un nouvel utilisateur
+  public static function register($nom, $prenom, $login, $mdp, $role_responsable, $role_examinateur, $role_etudiant) {
+     try {
+        $database = Model::getInstance();
+        
+        // Vérifier si le login existe déjà
+        $query = "select id from personne where login = :login";
+        $statement = $database->prepare($query);
+        $statement->execute([':login' => $login]);
+
+        if ($statement->rowCount() > 0) {
+            return ['status' => 'login_existant'];
+        }
+        
+        // recherche de la valeur de la clé = max(id) + 1
+        $query = "select max(id) from personne";
+        $statement = $database->query($query);
+        $tuple = $statement->fetch();
+        $id = $tuple['0'];
+        $id++;
+
+        // Insertion du nouvel utilisateur
+        $insert = "insert into personne (id, nom, prenom, role_responsable, role_examinateur, role_etudiant, login, password)
+                   values (:id, :nom, :prenom, :res, :exam, :etu, :login, :mdp)";
+        $statement = $database->prepare($insert);
+        $statement->execute([
+            ':id' => $id,
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':res' => $role_responsable,
+            ':exam' => $role_examinateur,
+            ':etu' => $role_etudiant,
+            ':login' => $login,
+            ':mdp' => $mdp
+        ]);
+
+        return ['status' => 'ok'];
+     } catch (PDOException $e) {
+      printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+      return NULL;
+     }
+  }
 
 
 
