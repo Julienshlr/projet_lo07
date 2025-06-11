@@ -83,21 +83,6 @@ class ModelConnection {
       $this->password = $password;
   }
   
-  // Retourne une liste des id
-  public static function getAllId() {
-     try {
-      $database = Model::getInstance();
-      $query = "select id from personne";
-      $statement = $database->prepare($query);
-      $statement->execute();
-      $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-      return $results;
-     } catch (PDOException $e) {
-      printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
-      return NULL;
-     }
-  }
-  
   // Vérifie les identifiants
   public static function verifIdentifiants($login, $mdp) {
     try {

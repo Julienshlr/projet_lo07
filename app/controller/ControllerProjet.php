@@ -1,7 +1,8 @@
 <?php
 
 class ControllerProjet {
-    // --- page d'accueil
+ 
+ // --- page d'accueil
  public static function projetAccueil() {
   include 'config.php';
   $vue = $root . '/app/view/viewProjetAccueil.php';

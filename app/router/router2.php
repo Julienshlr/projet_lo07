@@ -3,6 +3,7 @@
 <?php
 require ('../controller/ControllerProjet.php');
 require ('../controller/ControllerConnection.php');
+require ('../controller/ControllerEtudiant.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -35,7 +36,7 @@ switch ($action) {
     ControllerExaminateur::$action($args);
     break;
  
- case "#" :
+ case "readAllRDV" :
     ControllerEtudiant::$action($args);
     break;
  
