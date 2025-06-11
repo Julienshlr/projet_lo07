@@ -19,7 +19,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
       ?>
       
   <div class="container mt-3 p-5">
-    <table class = "table table-striped table-bordered">
+    <table class = "table table-success table-striped table-bordered">
       <thead>
         <tr>
             <?php
