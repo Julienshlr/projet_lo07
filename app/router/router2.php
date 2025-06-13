@@ -4,6 +4,7 @@
 require ('../controller/ControllerProjet.php');
 require ('../controller/ControllerConnection.php');
 require ('../controller/ControllerEtudiant.php');
+require ('../controller/ControllerResponsable.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -28,7 +29,7 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
- case "#" :
+ case "readAllProjects" :
   ControllerResponsable::$action($args);
   break;
 
