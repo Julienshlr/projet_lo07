@@ -11,7 +11,7 @@ $login = $_SESSION['login'] ?? "?";
 
 <nav class="navbar navbar-expand-lg bg-success fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="router2.php?action=ProjetAccueil">SCHIELER - PERROUX |  <?php echo $user ?> |</a>
+    <a class="navbar-brand" href="router2.php?action=ProjetAccueil">SCHIELER - PERROUX | <?php echo $user ?> |</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,7 @@ $login = $_SESSION['login'] ?? "?";
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Etudiant</a>
           <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="router2.php?action=readAllRDV">Liste de mes RDV</a></li>
-              <li><a class="dropdown-item" href="router2.php?action=caveProposition2">Prendre un RDV pour un projet</a></li>
+              <li><a class="dropdown-item" href="router2.php?action=readCreneauDispo">Prendre un RDV pour un projet</a></li>
           </ul>
         </li>
         <?php } ?>
