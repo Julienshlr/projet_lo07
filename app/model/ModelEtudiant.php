@@ -29,20 +29,23 @@ class ModelEtudiant {
   public static function getCreneauxDisponibles() {
     try {
       $database = Model::getInstance();
-      $query = "SELECT c.id, c.creneau, p.label AS projet, exam.nom AS exam_nom, exam.prenom AS exam_prenom
-                FROM creneau c, projet p, personne exam
-                WHERE c.projet = p.id 
-                AND c.examinateur = exam.id 
-                AND c.id NOT IN (
-                    SELECT r.creneau
-                    FROM rdv r, creneau c2, projet p2
-                    WHERE r.creneau = c2.id 
-                    AND c2.projet = p2.id
-                    GROUP BY r.creneau, p2.groupe
-                    HAVING COUNT(*) >= p2.groupe
-                    )";
+      $query = "select c.id as id_creneau, c.creneau, p.label as projet, exam.nom as exam_nom, exam.prenom as exam_prenom
+                from creneau c, projet p, personne exam
+                where c.projet = p.id 
+                and c.examinateur = exam.id 
+                and c.id not in (
+                    select r.creneau
+                    from rdv r, creneau c2, projet p2
+                    where r.creneau = c2.id 
+                    and c2.projet = p2.id
+                    group by r.creneau, p2.groupe
+                    having count(*) >= p2.groupe
+                    )
+                order by c.projet, c.creneau";
+                
 
-      $statement = $database->query($query);
+      $statement = $database->prepare($query);
+      $statement->execute();
       return $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());

@@ -20,6 +20,15 @@ class ControllerEtudiant {
    echo ("ControllerConnection : login : vue = $vue");
   require ($vue);
  }
+ 
+ // Prendre RDV
+ public static function readCreneauDispo() {
+  $results = ModelEtudiant::getCreneauxDisponibles();
+  // ----- Construction chemin de la vue
+  include 'config.php';
+  $vue = $root . '/app/view/etudiant/viewCreneauDispo.php';
+  require($vue);
+ }
     
 }
 ?>

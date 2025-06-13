@@ -19,6 +19,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
       ?>
       
   <div class="container mt-3 p-5">
+    <h2 class="mt-4">Liste de vos rendez-vous</h2>
     <table class = "table table-success table-striped table-bordered">
       <thead>
         <tr>
