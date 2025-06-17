@@ -37,6 +37,8 @@ switch ($action) {
     case "createdExaminateur":
     case "selectProjetPourExaminateurs":
     case "readExaminateursParProjet":
+    case "selectProjetPourPlanning":
+    case "readPlanningParProjet":
         ControllerResponsable::$action($args);
         break;
 

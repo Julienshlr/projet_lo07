@@ -129,6 +129,27 @@ class ModelResponsable {
             return NULL;
         }
     }
+
+    public static function getPlanningParProjet($id_projet) {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT p2.nom AS etu_nom, p2.prenom AS etu_prenom,
+                         c.creneau, 
+                         p1.nom AS exam_nom, p1.prenom AS exam_prenom
+                  FROM rdv r
+                  JOIN creneau c ON r.creneau = c.id
+                  JOIN personne p1 ON c.examinateur = p1.id
+                  JOIN personne p2 ON r.etudiant = p2.id
+                  WHERE c.projet = :id_projet
+                  ORDER BY c.creneau";
+            $statement = $database->prepare($query);
+            $statement->execute([':id_projet' => $id_projet]);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 }
 ?>
 <!-- ----- fin ModelResponsable -->

@@ -84,6 +84,27 @@ class ControllerResponsable {
         $vue = $root . '/app/view/responsable/viewExaminateursParProjet.php';
         require($vue);
     }
+
+    public static function selectProjetPourPlanning() {
+        $id_respo = $_SESSION['login_id'];
+        $projets = ModelResponsable::getMesProjets($id_respo);
+        include 'config.php';
+        $vue = $root . '/app/view/responsable/viewSelectProjetPlanning.php';
+        require($vue);
+    }
+
+    public static function readPlanningParProjet() {
+        $id_projet = $_GET['projet'] ?? null;
+        if ($id_projet === null) {
+            header('Location: router2.php?action=selectProjetPourPlanning');
+            exit();
+        }
+
+        $results = ModelResponsable::getPlanningParProjet($id_projet);
+        include 'config.php';
+        $vue = $root . '/app/view/responsable/viewPlanningProjet.php';
+        require($vue);
+    }
 }
 ?>
 <!-- ----- fin ControllerResponsable -->

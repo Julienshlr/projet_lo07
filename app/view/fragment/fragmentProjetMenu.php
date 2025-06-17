@@ -31,7 +31,7 @@ $login = $_SESSION['login'] ?? "?";
             <li><a class="dropdown-item" href="router2.php?action=createExaminateur">Ajout d'un examinateur</a></li>
             <li><a class="dropdown-item" href="router2.php?action=selectProjetPourExaminateurs">Liste des examinateurs d'un projet</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="router2.php?action=#">Planning d'un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=selectProjetPourPlanning">Planning d'un projet</a></li>
           </ul>
         </li>
         <?php } ?>
