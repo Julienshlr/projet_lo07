@@ -45,6 +45,8 @@ switch ($action) {
 
     case "readAllProjets":
     case "readAllCreneaux":
+    case "selectProjetPourCreneaux":
+    case "readCreneauxPourProjet":
         ControllerExaminateur::$action($args);
         break;
 
