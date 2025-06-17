@@ -40,6 +40,13 @@ public static function createdProjet() {
     require($vue);
 }
 
+public static function readAllExaminateurs() {
+    $results = ModelResponsable::getAllExaminateurs();
+    include 'config.php';
+    $vue = $root . '/app/view/responsable/viewAllExaminateurs.php';
+    require($vue);
+}
+
     
 }
 ?>

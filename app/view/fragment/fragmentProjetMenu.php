@@ -27,7 +27,7 @@ $login = $_SESSION['login'] ?? "?";
             <li><a class="dropdown-item" href="router2.php?action=readAllProjects">Liste de mes projets</a></li>
             <li><a class="dropdown-item" href="router2.php?action=createProjet">Ajout d'un projet</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="router2.php?action=#">Liste des examinateurs</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=readAllExaminateurs">Liste des examinateurs</a></li>
             <li><a class="dropdown-item" href="router2.php?action=#">Ajout d'un examinateur</a></li>
             <li><a class="dropdown-item" href="router2.php?action=#">Liste des examinateurs d'un projet</a></li>
             <li><hr class="dropdown-divider"></li>
