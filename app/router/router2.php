@@ -5,6 +5,7 @@ require ('../controller/ControllerProjet.php');
 require ('../controller/ControllerConnection.php');
 require ('../controller/ControllerEtudiant.php');
 require ('../controller/ControllerResponsable.php');
+require ('../controller/ControllerExaminateur.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -42,7 +43,7 @@ switch ($action) {
         ControllerResponsable::$action($args);
         break;
 
-    case "#" :
+    case "readAllProjets":
         ControllerExaminateur::$action($args);
         break;
 

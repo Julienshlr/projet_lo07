@@ -41,7 +41,7 @@ $login = $_SESSION['login'] ?? "?";
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Examinateur</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router2.php?action=#">Liste des projets</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=readAllProjets">Liste des projets</a></li>
             <li><a class="dropdown-item" href="router2.php?action=#">Liste complète de mes créneaux</a></li>
             <li><a class="dropdown-item" href="router2.php?action=#">Liste de mes créneaux pour un projet</a></li>
             <li><a class="dropdown-item" href="router2.php?action=#">Ajouter un créneau à un projet</a></li>
