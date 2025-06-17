@@ -29,38 +29,42 @@ $args = $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
- case "readAllProjects" :
- case "createProjet":
- case "createdProjet":
- case "readAllExaminateurs":
-  ControllerResponsable::$action($args);
-  break;
+    case "readAllProjects" :
+    case "createProjet":
+    case "createdProjet":
+    case "readAllExaminateurs":
+    case "createExaminateur":
+    case "createdExaminateur":
+    case "selectProjetPourExaminateurs":
+    case "readExaminateursParProjet":
+        ControllerResponsable::$action($args);
+        break;
 
- case "#" :
-    ControllerExaminateur::$action($args);
-    break;
- 
- case "readAllRDV" :
- case "readCreneauDispo" :
-    ControllerEtudiant::$action($args);
-    break;
- 
- case "#" :
-    ControllerInnovation::$action($args);
-    break;
+    case "#" :
+        ControllerExaminateur::$action($args);
+        break;
 
- case "login" :
- case "register" :
- case "logout" :
- case "readLogin" :
- case "readRegister" :
-    ControllerConnection::$action($args);
-    break;
+    case "readAllRDV" :
+    case "readCreneauDispo" :
+        ControllerEtudiant::$action($args);
+        break;
 
- // Tache par défaut
- default:
-  $action = "projetAccueil";
-  ControllerProjet::$action($args);
+    case "#" :
+        ControllerInnovation::$action($args);
+        break;
+
+    case "login" :
+    case "register" :
+    case "logout" :
+    case "readLogin" :
+    case "readRegister" :
+        ControllerConnection::$action($args);
+        break;
+
+    // Tache par défaut
+    default:
+        $action = "projetAccueil";
+        ControllerProjet::$action($args);
 }
 ?>
 <!-- ----- Fin Router2 -->
