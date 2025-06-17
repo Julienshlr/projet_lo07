@@ -25,13 +25,13 @@ $login = $_SESSION['login'] ?? "?";
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Responsable</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="router2.php?action=readAllProjects">Liste de mes projets</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Ajout d'un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=createProjet">Ajout d'un projet</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Liste des examinateurs</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Ajout d'un examinateur</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Liste des examinateurs d'un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Liste des examinateurs</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Ajout d'un examinateur</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Liste des examinateurs d'un projet</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Planning d'un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Planning d'un projet</a></li>
           </ul>
         </li>
         <?php } ?>
@@ -41,11 +41,11 @@ $login = $_SESSION['login'] ?? "?";
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Examinateur</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router2.php?action=">Liste des projets</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Liste complète de mes créneaux</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Liste de mes créneaux pour un projet</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Ajouter un créneau à un projet</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Ajouter des créneaux consécutifs</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Liste des projets</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Liste complète de mes créneaux</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Liste de mes créneaux pour un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Ajouter un créneau à un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Ajouter des créneaux consécutifs</a></li>
           </ul>
         </li>
         <?php } ?>
@@ -65,8 +65,8 @@ $login = $_SESSION['login'] ?? "?";
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router2.php?action=">Proposez une fonctionnalité originale</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=">Proposez une amélioriation du code MVC</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Proposez une fonctionnalité originale</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=#">Proposez une amélioriation du code MVC</a></li>
           </ul>
         </li>
         

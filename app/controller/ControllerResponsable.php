@@ -20,6 +20,26 @@ class ControllerResponsable {
    echo ("ControllerConnection : login : vue = $vue");
   require ($vue);
  }
+ // Affiche le formulaire d'ajout
+public static function createProjet() {
+    include 'config.php';
+    $vue = $root . '/app/view/responsable/viewInsertProjet.php';
+    require($vue);
+}
+
+// Traite le formulaire
+public static function createdProjet() {
+    $label = htmlspecialchars($_GET['label'] ?? '');
+    $groupe = intval($_GET['groupe'] ?? 0);
+    $id_responsable = $_SESSION['login_id'];
+
+    $result = ModelResponsable::insertProjet($label, $id_responsable, $groupe);
+
+    include 'config.php';
+    $vue = $root . '/app/view/responsable/viewInsertedProjet.php';
+    require($vue);
+}
+
     
 }
 ?>

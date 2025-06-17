@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // --- $action contient le nom de la méthode statique recherchée
-$action = htmlspecialchars($param["action"]);
+$action = htmlspecialchars($param["action"] ?? "projetAccueil");
 
 // --- On supprime l'élément action de la structure
 unset($param['action']);
@@ -30,6 +30,8 @@ $args = $param;
 // --- Liste des méthodes autorisées
 switch ($action) {
  case "readAllProjects" :
+ case "createProjet":
+ case "createdProjet":
   ControllerResponsable::$action($args);
   break;
 
