@@ -7,7 +7,7 @@
 </div>
 
 <div class="container mt-3 p-5">
-  <h2>Liste des projets pour lesquels vous avez proposé un créneau</h2>
+  <h2>Projets pour lesquels vous avez proposé un créneau</h2>
 
   <?php if (empty($results)) : ?>
     <div class="alert alert-warning">Aucun projet trouvé.</div>
@@ -15,15 +15,17 @@
     <table class="table table-bordered table-striped table-success">
       <thead>
         <tr>
-          <th>Identifiant</th>
-          <th>Nom du projet</th>
+          <th>Projet</th>
+          <th>Responsable</th>
+          <th>Taille du groupe</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($results as $projet) : ?>
           <tr>
-            <td><?= htmlspecialchars($projet['id']) ?></td>
             <td><?= htmlspecialchars($projet['label']) ?></td>
+            <td><?= htmlspecialchars($projet['responsable_nom']) ?></td>
+            <td><?= htmlspecialchars($projet['groupe']) ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -33,4 +35,3 @@
 
 <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 <!-- ----- fin viewAllProjets -->
-
