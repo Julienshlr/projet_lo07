@@ -42,6 +42,54 @@ class ControllerExaminateur {
         $vue = $root . '/app/view/examinateur/viewCreneauxParProjet.php';
         require($vue);
     }
+
+    public static function ajouterCreneau() {
+        $id_exam = $_SESSION['login_id'];
+        $projets = ModelExaminateur::getAllProjets($id_exam);
+        include 'config.php';
+        $vue = $root . '/app/view/examinateur/viewAjouterCreneau.php';
+        require($vue);
+    }
+
+    public static function readAjouterCreneau() {
+        $id_exam = $_SESSION['login_id'];
+        $id_projet = $_POST['projet'];
+        $datetime = $_POST['creneau'];
+
+        // Convertir format input en timestamp SQL
+        $formatted = date("Y-m-d H:i:s", strtotime($datetime));
+
+        $result = ModelExaminateur::insertCreneau($id_exam, $id_projet, $formatted);
+
+        include 'config.php';
+        $vue = $root . '/app/view/examinateur/viewCreneauAjoute.php';
+        require($vue);
+    }
+
+    public static function ajouterListeCreneaux() {
+        $projets = ModelExaminateur::getAllProjets();
+        include 'config.php';
+        $vue = $root . '/app/view/examinateur/viewAjouterListeCreneaux.php';
+        require($vue);
+    }
+
+    public static function readAjouterListeCreneaux() {
+        $id_exam = $_SESSION['login_id'];
+        $id_projet = $_POST['projet'];
+        $datetime = $_POST['creneau'];
+        $nb = intval($_POST['nb']);
+
+        if ($nb < 1 || $nb > 10) {
+            $result = ['status' => 'error', 'message' => 'Le nombre de créneaux doit être entre 1 et 10'];
+        } else {
+            $formatted = date("Y-m-d H:i:s", strtotime($datetime));
+            $result = ModelExaminateur::insertListeCreneaux($id_exam, $id_projet, $formatted, $nb);
+        }
+
+        include 'config.php';
+        $vue = $root . '/app/view/examinateur/viewListeCreneauxAjoutes.php';
+        require($vue);
+    }
 }
 ?>
 

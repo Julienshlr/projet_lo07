@@ -44,8 +44,8 @@ $login = $_SESSION['login'] ?? "?";
             <li><a class="dropdown-item" href="router2.php?action=readAllProjets">Liste des projets</a></li>
             <li><a class="dropdown-item" href="router2.php?action=readAllCreneaux">Liste complète de mes créneaux</a></li>
             <li><a class="dropdown-item" href="router2.php?action=selectProjetPourCreneaux">Liste de mes créneaux pour un projet</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=#">Ajouter un créneau à un projet</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=#">Ajouter des créneaux consécutifs</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=ajouterCreneau">Ajouter un créneau à un projet</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=ajouterListeCreneaux">Ajouter des créneaux consécutifs</a></li>
           </ul>
         </li>
         <?php } ?>

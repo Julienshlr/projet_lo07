@@ -74,6 +74,77 @@ class ModelExaminateur {
             return NULL;
         }
     }
+
+    public static function insertCreneau($id_exam, $id_projet, $datetime) {
+        try {
+            $database = Model::getInstance();
+
+            $query = "SELECT MAX(id) FROM creneau";
+            $statement = $database->query($query);
+            $tuple = $statement->fetch();
+            $id = $tuple[0] + 1;
+
+            $insert = "INSERT INTO creneau (id, projet, examinateur, creneau)
+                   VALUES (:id, :projet, :examinateur, :creneau)";
+            $statement = $database->prepare($insert);
+            $statement->execute([
+                ':id' => $id,
+                ':projet' => $id_projet,
+                ':examinateur' => $id_exam,
+                ':creneau' => $datetime
+            ]);
+
+            return ['status' => 'ok', 'id' => $id];
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return ['status' => 'error'];
+        }
+    }
+
+    public static function getAllProjets() {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT id, label FROM projet ORDER BY label";
+            $statement = $database->query($query);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function insertListeCreneaux($id_exam, $id_projet, $start_datetime, $count) {
+        try {
+            $database = Model::getInstance();
+
+            // Récupérer le dernier ID de créneau
+            $query = "SELECT MAX(id) FROM creneau";
+            $statement = $database->query($query);
+            $tuple = $statement->fetch();
+            $last_id = $tuple[0] ?? 0;
+
+            // Ajout de $count créneaux espacés d'une heure
+            for ($i = 0; $i < $count; $i++) {
+                $id = $last_id + $i + 1;
+                $datetime = date("Y-m-d H:i:s", strtotime("+$i hour", strtotime($start_datetime)));
+
+                $insert = "INSERT INTO creneau (id, projet, examinateur, creneau)
+                       VALUES (:id, :projet, :examinateur, :creneau)";
+                $stmt = $database->prepare($insert);
+                $stmt->execute([
+                    ':id' => $id,
+                    ':projet' => $id_projet,
+                    ':examinateur' => $id_exam,
+                    ':creneau' => $datetime
+                ]);
+            }
+
+            return ['status' => 'ok', 'added' => $count];
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return ['status' => 'error'];
+        }
+    }
 }
 
 ?>

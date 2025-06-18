@@ -47,6 +47,10 @@ switch ($action) {
     case "readAllCreneaux":
     case "selectProjetPourCreneaux":
     case "readCreneauxPourProjet":
+    case "ajouterCreneau":
+    case "readAjouterCreneau":
+    case "ajouterListeCreneaux":
+    case "readAjouterListeCreneaux":
         ControllerExaminateur::$action($args);
         break;
 
