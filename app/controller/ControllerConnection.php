@@ -123,8 +123,9 @@ class ControllerConnection {
  
  // --- Déconnection
  public static function logout() {
-     
-   session_start();
+   if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+   }
    // Supprime toutes les variables de session
    $_SESSION = array();
 

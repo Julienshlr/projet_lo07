@@ -14,12 +14,15 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
   </div>
       
       <?php
+      if (!empty($results)) {
         $cols = array_keys($results[0]);
         $datas = $results;
+      }
       ?>
-      
+    
   <div class="container mt-3 p-5">
-    <h2 class="mt-4">Liste de vos rendez-vous</h2>
+    <h2>Liste de vos rendez-vous</h2>
+    <?php if (!empty($datas)) { ?>
     <table class = "table table-success table-striped table-bordered">
       <thead>
         <tr>
@@ -50,6 +53,11 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
           ?>
       </tbody>
     </table>
+    <?php } else { ?>
+        <div class="alert alert-warning" role="alert">
+            Vous n'avez pas de rendez-vous.
+        </div>
+    <?php } ?>
   </div>
   <?php include $root . '/app/view/fragment/fragmentProjetFooter.html'; ?>
 

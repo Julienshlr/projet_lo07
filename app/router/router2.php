@@ -56,6 +56,7 @@ switch ($action) {
 
     case "readAllRDV" :
     case "readCreneauDispo" :
+    case "prendreRDV" :
         ControllerEtudiant::$action($args);
         break;
 

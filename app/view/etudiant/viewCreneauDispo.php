@@ -12,7 +12,6 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
   </div>
     <div class="container mt-3 p-5">
     <h2 class="mt-4">Prendre un rendez-vous</h2>
-
     <form role="form" method="get" action="router2.php">
       <div class="form-group mt-3">
         <input type="hidden" name="action" value="prendreRDV">
@@ -23,7 +22,7 @@ require ($root . '/app/view/fragment/fragmentProjetHeader.html');
         if (!empty($results)) {
           $current_projet = null;
           foreach ($results as $c) {
-            $id = htmlspecialchars($c['id']);
+            $id = htmlspecialchars($c['id_creneau']);
             $creneau = htmlspecialchars($c['creneau']);
             $projet = htmlspecialchars($c['projet']);
             $exam = htmlspecialchars($c['exam_nom'] . ' ' . $c['exam_prenom']);
