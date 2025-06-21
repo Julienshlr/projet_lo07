@@ -60,16 +60,17 @@ switch ($action) {
         ControllerEtudiant::$action($args);
         break;
 
-    case "#" :
-        ControllerInnovation::$action($args);
-        break;
-
     case "login" :
     case "register" :
     case "logout" :
     case "readLogin" :
     case "readRegister" :
         ControllerConnection::$action($args);
+        break;
+    
+    case "projetProposition1" :
+    case "projetProposition2" :
+        ControllerProjet::$action($args);
         break;
 
     // Tache par défaut

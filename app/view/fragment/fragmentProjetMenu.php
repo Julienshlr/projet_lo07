@@ -65,8 +65,8 @@ $login = $_SESSION['login'] ?? "?";
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router2.php?action=#">Proposez une fonctionnalité originale</a></li>
-            <li><a class="dropdown-item" href="router2.php?action=#">Proposez une amélioriation du code MVC</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=projetProposition1">Fonctionnalité originale</a></li>
+            <li><a class="dropdown-item" href="router2.php?action=projetProposition2">Amélioriation du code MVC</a></li>
           </ul>
         </li>
         

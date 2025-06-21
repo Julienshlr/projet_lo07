@@ -18,14 +18,14 @@ class ControllerProjet {
  // Proposition 1 : Amélioration de la structure MVC
     public static function projetProposition1() {
         include 'config.php';
-        $vue = $root . '/app/view/documentation/viewProposition1.php';
+        $vue = $root . '/app/view/proposition/viewProposition1.php';
         require($vue);
     }
 
     // Proposition 2 : Sécurisation des accès (ex: PDO::prepare partout + vérification input)
     public static function projetProposition2() {
         include 'config.php';
-        $vue = $root . '/app/view/documentation/viewProposition2.php';
+        $vue = $root . '/app/view/proposition/viewProposition2.php';
         require($vue);
     }
 }
