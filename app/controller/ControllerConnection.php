@@ -71,10 +71,6 @@ class ControllerConnection {
   require ($vue);
  }
  
- 
- 
- 
- 
  // --- Formulaire d'inscription
  public static function register() {
   // ----- Construction chemin de la vue
@@ -139,7 +135,11 @@ class ControllerConnection {
    echo ("ControllerConnection : logout : vue = $vue");
   require ($vue);
  }
-    
+ 
+ // --- Enregistrement du log
+ public static function enregistrerLog($message) {
+  ModelConnection::insertLog($message);
+ }
 }
 ?>
 <!-- ----- fin ControllerConnection -->

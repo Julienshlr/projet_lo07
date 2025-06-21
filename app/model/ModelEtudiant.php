@@ -70,7 +70,7 @@ class ModelEtudiant {
       $id = $tuple['0'];
       $id++;
 
-      $query = "insert into rdv (id, creneau, etudiant) VALUES (:id, :creneau, :etudiant)";
+      $query = "insert into rdv (id, creneau, etudiant) values (:id, :creneau, :etudiant)";
       $statement = $database->prepare($query);
       $statement->execute([
         ':id' => $id,

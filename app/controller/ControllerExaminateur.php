@@ -1,8 +1,9 @@
 <?php
 
 require_once '../model/ModelExaminateur.php';
+require_once 'ControllerConnection.php';
 
-class ControllerExaminateur {
+class ControllerExaminateur extends ControllerConnection{
 
     public static function readAllProjets() {
         $id_exam = $_SESSION['login_id'];
@@ -60,6 +61,11 @@ class ControllerExaminateur {
         $formatted = date("Y-m-d H:i:s", strtotime($datetime));
 
         $result = ModelExaminateur::insertCreneau($id_exam, $id_projet, $formatted);
+        
+        // Insère la notif dans la table log
+        $results = ModelExaminateur::getOneProjet($id_projet);
+        $message = "Vous avez inséré un nouveau créneau au projet <strong>". $results['label'] . "</strong>";
+        $notif = self::enregistrerLog($message);
 
         include 'config.php';
         $vue = $root . '/app/view/examinateur/viewCreneauAjoute.php';
@@ -84,7 +90,13 @@ class ControllerExaminateur {
         } else {
             $formatted = date("Y-m-d H:i:s", strtotime($datetime));
             $result = ModelExaminateur::insertListeCreneaux($id_exam, $id_projet, $formatted, $nb);
+            
+            // Insère la notif dans la table log
+            $results = ModelExaminateur::getOneProjet($id_projet);
+            $message = "Vous avez inséré <strong>" . $nb . "</strong> créneaux au projet <strong>". $results['label'] . "</strong>";
+            $notif = self::enregistrerLog($message);
         }
+        
 
         include 'config.php';
         $vue = $root . '/app/view/examinateur/viewListeCreneauxAjoutes.php';

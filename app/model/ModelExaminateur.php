@@ -100,6 +100,19 @@ class ModelExaminateur {
             return ['status' => 'error'];
         }
     }
+    
+    public static function getOneProjet($id_projet) {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT label FROM projet WHERE id = :id_projet";
+            $statement = $database->prepare($query);
+            $statement->execute(["id_projet" => $id_projet]);
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 
     public static function getAllProjets() {
         try {

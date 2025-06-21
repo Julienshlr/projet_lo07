@@ -6,8 +6,9 @@
 <!-- ----- debut ControllerResponsable -->
 <?php
 require_once '../model/ModelResponsable.php';
+require_once 'ControllerConnection.php';
 
-class ControllerResponsable {
+class ControllerResponsable extends ControllerConnection {
 
     // --- Liste des RDV
     public static function readAllProjects() {
@@ -17,7 +18,7 @@ class ControllerResponsable {
         include 'config.php';
         $vue = $root . '/app/view/responsable/viewAll.php';
         if (DEBUG)
-            echo ("ControllerConnection : login : vue = $vue");
+            echo ("ControllerResponsable : readAllProjects : vue = $vue");
         require ($vue);
     }
 
@@ -35,6 +36,10 @@ class ControllerResponsable {
         $id_responsable = $_SESSION['login_id'];
 
         $result = ModelResponsable::insertProjet($label, $id_responsable, $groupe);
+        
+        // Insère la notif dans la table log
+        $message = "Vous avez inséré un nouveau projet : <strong>". $label . "</strong>";
+        $notif = self::enregistrerLog($message);
 
         include 'config.php';
         $vue = $root . '/app/view/responsable/viewInsertedProjet.php';
@@ -58,6 +63,12 @@ class ControllerResponsable {
         $nom = strtoupper(htmlspecialchars($_GET['nom'] ?? ''));
         $prenom = ucfirst(strtolower(htmlspecialchars($_GET['prenom'] ?? '')));
         $result = ModelResponsable::insertExaminateur($nom, $prenom);
+        
+        // Insère la notif dans la table log
+        if ($result['status'] === 'ok') {
+            $message = "Vous avez inséré un nouvel examinateur : <strong>". $nom . " " . $prenom . "</strong>";
+            $notif = self::enregistrerLog($message);
+        }
 
         include 'config.php';
         $vue = $root . '/app/view/responsable/viewInsertedExaminateur.php';

@@ -13,7 +13,7 @@ require($root . '/app/view/fragment/fragmentProjetHeader.html');
 
   <div class="container mt-3 p-5">
     <div class="alert alert-success" role="alert">
-      <h4 class="alert-heading text-success">Vous êtes déconnecté</h4>
+      <h2 class="alert-heading text-success">Vous êtes déconnecté</h2>
       <p>Merci de votre visite et à bientôt !</p>
     </div>
     <a href="router2.php?action=login" class="btn btn-primary mt-3">Aller à la page de connexion</a>

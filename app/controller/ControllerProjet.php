@@ -1,9 +1,12 @@
 <?php
 
+require_once '../model/ModelConnection.php';
+
 class ControllerProjet {
  
  // --- page d'accueil
  public static function projetAccueil() {
+  $results = ModelConnection::readLog();
   include 'config.php';
   $vue = $root . '/app/view/viewProjetAccueil.php';
   if (DEBUG)

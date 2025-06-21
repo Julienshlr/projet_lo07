@@ -14,8 +14,25 @@
       <?php echo $_SESSION['welcome_message']; unset($_SESSION['welcome_message']); ?>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    <?php } ?>
+  <?php } ?>
     
+  <div class="container mt-3 p-5"> 
+    <div class="alert alert-success" role="alert">
+      <h2 class="alert-heading text-success">Votre activité récente :</h2>
+
+      <?php if (empty($results)) { ?>
+        <p class="mb-0">Aucune activité récente pour le moment.</p>
+      <?php } else { ?>
+        <ul id="log-list">
+          <?php foreach ($results as $log) { ?>
+            <li><?= $log['date'] ?> — <?= $log['message'] ?></li>
+          <?php } ?>
+        </ul>
+      <?php } ?>
+    </div>
+  </div>
+
+
   <?php
   include 'fragment/fragmentProjetFooter.html';
   ?>

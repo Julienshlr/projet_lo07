@@ -160,7 +160,45 @@ class ModelConnection {
      }
   }
 
-
+  public static function insertLog($message) {
+      try {
+        $database = Model::getInstance();
+        
+        // recherche de la valeur de la clé = max(id) + 1
+        $query = "select max(id) from log";
+        $statement = $database->query($query);
+        $tuple = $statement->fetch();
+        $id = $tuple['0'];
+        $id++;
+        
+        // Insertion du log
+        $query = "insert into log (id, personne, message) values (:id, :personne, :message)";
+        $statement = $database->prepare($query);
+        $statement->execute([
+          ':id' => $id,
+          ':personne' => $_SESSION["login_id"],
+          ':message' => $message
+        ]);
+        return $id;
+    } catch (PDOException $e) {
+      printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+      return NULL;
+    }
+  }
+  
+  public static function readLog() {
+      try {
+        $database = Model::getInstance();
+        $query = "select * from log where personne = :id_personne";
+        $statement = $database->prepare($query);
+        $statement->execute([":id_personne" => $_SESSION["login_id"]]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    } catch (PDOException $e) {
+      printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+      return NULL;
+    }
+  }
 
 
 }
